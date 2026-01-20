@@ -1,0 +1,11 @@
+{
+    "session_id": "session-1768718502",
+    "feature_branch": "feat/claude-md-orchestrator-ui",
+    "base_branch": "main",
+    "prompt": "write out a claude.md file for an ai orchestrator ui. It's an app with a nice ui allows an authenticated user to connect to all of their claude-code instances    \n  running anywhere. main points: 1) it will present a clean ui using htmx. It will use rust for serving htmx content and handling api calls 2) it      \n  will aggregate instances of https://github.com/siteboon/claudecodeui. This project will be modified and will connect , and the orchestrator will then     \n  present those connected clients to a logged in user on a subpage 3) it will authenticate using a github app, which the admin can restrict to specific organizations, users or teams 4)   \n  it must run on cloudflare, so it should be light, use minimal resources when not in use, and should be compatible with cloudflare workers, d2 and r2 5) build this using the appropriate cloudflare skills 5) optimize for cost, using durable objects and minimal cpu and memory\n",
+    "state": "STARTED",
+    "started_at": "2026-01-18T06:41:42Z",
+    "agents": [],
+    "merged_count": 0,
+    "conflict_count": 0
+}

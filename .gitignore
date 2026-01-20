@@ -1,0 +1,24 @@
+.fork-join
+
+# Rust build artifacts
+target/
+build/
+Cargo.lock
+
+# Wrangler
+.wrangler/
+.dev.vars
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local

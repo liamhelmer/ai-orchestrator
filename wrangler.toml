@@ -1,0 +1,51 @@
+name = "ai-orchestrator"
+main = "build/worker/shim.mjs"
+compatibility_date = "2024-01-01"
+
+[build]
+command = "cargo install -q worker-build && worker-build --release"
+
+# Durable Objects configuration
+[durable_objects]
+bindings = [{ name = "USER_HUB", class_name = "UserHub" }]
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["UserHub"]
+
+# D1 Database binding
+[[d1_databases]]
+binding = "DB"
+database_name = "orchestrator-db"
+database_id = "d50e199d-15ce-4061-813a-20d091ddc0c2"
+
+# R2 bucket for static assets
+[[r2_buckets]]
+binding = "ASSETS"
+bucket_name = "orchestrator-assets"
+
+# Environment variables (secrets should use `wrangler secret put`)
+# Required secrets (set via `wrangler secret put <NAME>`):
+#   - GITHUB_CLIENT_SECRET: GitHub OAuth app secret
+#   - CLOUDFLARE_ZONE_ID: Zone ID for cache purge (from Cloudflare dashboard)
+#   - CLOUDFLARE_API_TOKEN: API token with Cache Purge permission
+[vars]
+GITHUB_CLIENT_ID = "Ov23liCmLw4EzqdaoEXD"
+ALLOWED_ORGS = ""
+ALLOWED_USERS = "liamhelmer"
+ALLOWED_TEAMS = ""
+
+# Development environment
+[env.dev]
+name = "ai-orchestrator-dev"
+vars = { ENVIRONMENT = "development" }
+
+# Staging environment
+[env.staging]
+name = "ai-orchestrator-staging"
+vars = { ENVIRONMENT = "staging" }
+
+# Production environment
+[env.production]
+name = "ai-orchestrator"
+vars = { ENVIRONMENT = "production" }
